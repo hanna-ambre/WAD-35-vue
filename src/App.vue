@@ -1,26 +1,38 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <router-view/>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
-</script>
-
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+* {
+  font-family: sans-serif;
+  box-sizing: border-box;
+  color: black;
 }
+
+/* Keeps header/footer touching the top/bottom of the page, instead of there being a gap.*/
+body {
+  line-height: 1.6;
+  margin: 0;
+}
+
+/*No padding and also no dots for lists.*/
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/*Links aren't underlined*/
+a {
+  text-decoration: none;
+}
+
+/*All lists' items are shown in a row.*/
+li {
+  padding: 10px 10px;
+  text-align: left;
+  display: inline-block;
+  font-size: .99em;
+}
+
 </style>
