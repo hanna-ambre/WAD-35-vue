@@ -2,14 +2,14 @@
   <div class="post" v-for="post in postsList" :key="post.id">
     <div class="post-Header">
       <div class="post-nav">
-        <img class="avatar" alt="Post picture" src={{post.avatar}}>
+        <img :src="post.avatar" class="avatar" alt="Post picture">
         <a href="#">{{post.name}}</a>
       </div>
       <a href="#">{{post.date}}</a>
     </div>
     <div class="post-body">
       <p>{{post.text}}</p>
-      <img class="avatar" alt="Post picture" src={{post.image}}>
+      <img class="post-pictures" alt="Post picture" :src=post.image>
     </div>
   </div>
 </template>
@@ -66,7 +66,7 @@ export default {
 }
 
 /*Sets the sizes of the posts' avatars.*/
-.avatar img {
+.avatar{
   width: 50px;
   height: 50px;
 }
