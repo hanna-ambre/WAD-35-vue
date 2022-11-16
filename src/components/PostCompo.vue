@@ -2,14 +2,14 @@
   <div class="post" v-for="post in postsList" :key="post.id">
     <div class="post-Header">
       <div class="post-nav">
-        <img :src="post.avatar" class="avatar" alt="Post picture">
+        <img :src="require('@/assets/'+post.avatar)" class="avatar" alt="Post picture">
         <a href="#">{{post.name}}</a>
       </div>
       <a href="#">{{post.date}}</a>
     </div>
     <div class="post-body">
       <p>{{post.text}}</p>
-      <img class="post-pictures" alt="Post picture" :src=post.image>
+      <img v-if="post.image != ''" :src="require('@/assets/'+post.image)" class="post-pictures" alt="Post picture">
     </div>
   </div>
 </template>
