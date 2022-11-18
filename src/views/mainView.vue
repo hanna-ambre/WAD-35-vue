@@ -7,6 +7,9 @@
     </div>
     <div class="banner"></div>
   </div>
+  <div>
+    <button class="reset_likes" v-on:click="reset_likes">Reset likes</button>
+  </div>
   <footer-compo></footer-compo>
 </template>
 
@@ -14,10 +17,20 @@
 import headerCompo from "@/components/HeaderCompo.vue";
 import footerCompo from "@/components/FooterCompo.vue";
 import postCompo from "@/components/PostCompo.vue";
+import store from '@/store';
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "main",
-  components: { headerCompo, footerCompo, postCompo },
+  components: { 
+    headerCompo, 
+    footerCompo, 
+    postCompo 
+  },
+methods: {
+  reset_likes(){
+    store.commit("reset_likes")
+  }
+  }
 }
 </script>
 
@@ -48,6 +61,14 @@ export default {
   width: 70%;
 }
 
+/*positions the like button between footer and posts*/
+.reset_likes {
+  margin: auto;
+  position: absolute;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
 /*
     Applies when the browser's width is less than 1000px wide:
 */

@@ -42,9 +42,9 @@ export default createStore({
                 document.getElementById("Dropdown").style.display="table";
             }
         },
-        like_post: (state, {postId}) => {
+        like_post: (state, {id}) => {
                 state.postsList.forEach (post => {
-                    if(post.id == postId){
+                    if(post.id == id){
                         post.likes += 1
                     }
                 })

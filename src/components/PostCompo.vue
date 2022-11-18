@@ -11,7 +11,7 @@
       <p>{{post.text}}</p>
       <img v-if="post.image != ''" :src="require('@/assets/'+post.image)" class="post-pictures" alt="Post picture">
       <div class="post-likes">
-        <button v-on:click="like_post">
+        <button v-on:click="like_post(post.id)">
           <img alt="Like button" src='@/assets/thumbsup.png'>
         </button>
         <p>{{post.likes}} likes</p>
@@ -22,31 +22,23 @@
 
 <script>
 import store from "@/store"
+
 export default {
   name: "postCompo",
   props: {
-    id: Number,
-    avatar: String,
-    name: String,
-    date: Date,
-    text: String,
-    image: String,
-    likes: Number
   },
   data: function() {
     return {}
   },
   methods: {
-    like_post(){
-      store.commit("like_post", {postId: this.id})
+    like_post(id){
+      console.log(id)
+      store.commit("like_post", {id})
     },
-    reset_likes: function () {
-      this.$store.commit("reset")
-    }
   },
   computed: {
     postsList(){
-      return this.$store.getters.postsList
+      return store.getters.postsList
     },
   }
 }

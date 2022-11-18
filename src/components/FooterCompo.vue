@@ -45,6 +45,7 @@ export default {
 .footer {
   text-align: center;
   background-color: #bfbfbf;
+  margin-top: 1.5em;
   padding-top: .5em;
   padding-bottom: .5em;
   border-radius: 15px;
