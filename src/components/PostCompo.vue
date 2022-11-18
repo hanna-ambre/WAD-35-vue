@@ -10,16 +10,39 @@
     <div class="post-body">
       <p>{{post.text}}</p>
       <img v-if="post.image != ''" :src="require('@/assets/'+post.image)" class="post-pictures" alt="Post picture">
+      <div class="post-likes">
+        <button v-on:click="like_post">
+          <img alt="Like button" src='@/assets/thumbsup.png'>
+        </button>
+        <p>{{post.likes}} likes</p>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import store from "@/store"
 export default {
   name: "postCompo",
-  props: [],
+  props: {
+    id: Number,
+    avatar: String,
+    name: String,
+    date: Date,
+    text: String,
+    image: String,
+    likes: Number
+  },
   data: function() {
     return {}
+  },
+  methods: {
+    like_post(){
+      store.commit("like_post", {postId: this.id})
+    },
+    reset_likes: function () {
+      this.$store.commit("reset")
+    }
   },
   computed: {
     postsList(){
@@ -55,6 +78,27 @@ export default {
   padding: 10px;
 }
 
+.post-likes {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.post-likes button{
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.post-likes button:hover {
+  cursor: pointer;
+  background:#cecfd1;
+}
+.post-likes img {
+  width: 50px;
+  height: 50px;
+}
+
 /*Post header links' backgrounds change when hovering over them.*/
 .avatar ~ a:hover { /*Applies to the name of a post (after avatar).*/
   background-color: #cecfd1;
@@ -67,8 +111,8 @@ export default {
 
 /*Sets the sizes of the posts' avatars.*/
 .avatar{
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
 }
 
 /*Sets the sizes of pictures in the posts.*/
