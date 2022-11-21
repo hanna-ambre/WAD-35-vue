@@ -9,14 +9,28 @@
     <form action="/">
       <div>
         <label>Email </label>
-        <input type="text" name="email" placeholder="Email" required>
+        <input
+            type="text"
+            id="email_input"
+            name="email"
+            placeholder="email@example.com" required
+        />
       </div>
       <div>
         <label>Password </label>
-        <input type="text" name="password" placeholder="Password" required>
+        <input
+            type="text"
+            name="password"
+            id="password_creation_input"
+            :minlength="8"
+            :maxlength="15"
+            placeholder="Password" required
+        />
       </div>
       <div class="more_padding">
-        <input class="blue_button" type="submit" value="Signup">
+        <form>
+        <input class="blue_button" type="submit" value="Signup" @click="check($event)">
+        </form>
       </div>
       <!--
       <div class="more_padding">
@@ -29,12 +43,88 @@
 </template>
 
 <script>
+
+export function validatePasswordStartsUppercase(password) {
+  if ((/[A-Z]/).test(password.charAt(0))) {
+    return true
+  } else {
+    return false
+  }
+}
+
+export function validatePasswordUppercase(password) {
+  if ((/[A-Z]/).test(password)) {
+    return true
+  } else {
+    return false
+  }
+}
+
+export function validatePasswordcontains_(password) {
+  if ((/_/).test(password)) {
+    return true
+  } else {
+    return false
+  }
+}
+
+export function validatePasswordLowercase(password) {
+  if ((/[a-z]/).test(password)) {
+    return true
+  } else {
+    return false
+  }
+}
+
+export function validatePasswordNumbers(password) {
+  return /[0-9]/.test(password);
+}
+
 import headerCompo from "@/components/HeaderCompo.vue";
 import footerCompo from "@/components/FooterCompo.vue";
+
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "signup",
   components: { headerCompo, footerCompo },
+  data() {
+    return {
+      password: '',
+    }
+  },
+  methods: {
+    check(e) {
+      var value = document.getElementById('password_creation_input').value;
+      if (value.length<8) {
+        e.preventDefault()
+        alert("The size of the password does not meet the NATO standard. (The current lenght is " + value.length + " and the needed lenght is at least 8.")
+      }
+      else if (value.length>14) {
+        e.preventDefault()
+        alert("The size of the password does not meet the NATO standard. (The current lenght is " + value.length + " and the maximum lenght is 14.")
+      }
+      else if (!(validatePasswordUppercase(value))) {
+          e.preventDefault()
+          alert("there are not enough Upper case letters")
+      }
+      else if (!(validatePasswordLowercase(value))){
+        e.preventDefault()
+        alert("there are not enough Lower case letters")
+      }
+      else if (!(validatePasswordNumbers(value))){
+        e.preventDefault()
+        alert("The password lacks your power rating(add any numeric value)!")
+      }
+      else if (!(validatePasswordStartsUppercase(value))){
+        e.preventDefault()
+        alert("The start is not strong enough, Start the password with uppercase character!")
+      }
+      else if (!(validatePasswordcontains_(value))){
+        e.preventDefault()
+        alert("the password is not autistic enough add '_' to it")
+      }
+    },
+  }
 }
 </script>
 
