@@ -26,17 +26,11 @@
             :maxlength="15"
             placeholder="Password" required
         />
+        <p id="error"></p>
       </div>
       <div class="more_padding">
-        <form>
         <input class="blue_button" type="submit" value="Signup" @click="check($event)">
-        </form>
       </div>
-      <!--
-      <div class="more_padding">
-        <a class="blue_text">Forget password</a>
-      </div>
-      -->
     </form>
   </div>
   <footer-compo></footer-compo>
@@ -97,31 +91,39 @@ export default {
       var value = document.getElementById('password_creation_input').value;
       if (value.length<8) {
         e.preventDefault()
-        alert("The size of the password does not meet the NATO standard. (The current lenght is " + value.length + " and the needed lenght is at least 8.")
+        console.log("The password is too short, current lenght is " + value.length + " and the needed lenght is at least 8.")
+        document.getElementById("error").innerText = ("The password is too short, current lenght is " + value.length + " and the needed lenght is at least 8.");
+        alert("The size of the password does not meet the NATO standard. (The current lenght is " + value.length + " and the needed lenght is at least 8.");
       }
       else if (value.length>14) {
         e.preventDefault()
-        alert("The size of the password does not meet the NATO standard. (The current lenght is " + value.length + " and the maximum lenght is 14.")
+        console.log("The password is too long, current lenght is " + value.length + " and the maximum lenght is 14.")
+        document.getElementById("error").innerText = ("The size of the password does not meet the NATO standard. (The current lenght is " + value.length + " and the maximum lenght is 14.")
       }
       else if (!(validatePasswordUppercase(value))) {
-          e.preventDefault()
-          alert("there are not enough Upper case letters")
+        e.preventDefault()
+        console.log("there are not enough Upper case letters!")
+        document.getElementById("error").innerText = ("there are not enough Upper case letters!")
       }
       else if (!(validatePasswordLowercase(value))){
         e.preventDefault()
-        alert("there are not enough Lower case letters")
+        console.log("there are not enough Lower case letters!")
+        document.getElementById("error").innerText = ("there are not enough Lower case letters")
       }
       else if (!(validatePasswordNumbers(value))){
         e.preventDefault()
-        alert("The password lacks your power rating(add any numeric value)!")
+        console.log("The password lacks your power rating(add any numeric value)!")
+        document.getElementById("error").innerText = ("The password lacks your power rating(add any numeric value)!")
       }
       else if (!(validatePasswordStartsUppercase(value))){
         e.preventDefault()
-        alert("The start is not strong enough, Start the password with uppercase character!")
+        console.log("The start is not strong enough, Start the password with uppercase character!")
+        document.getElementById("error").innerText = ("The start is not strong enough, Start the password with uppercase character!")
       }
       else if (!(validatePasswordcontains_(value))){
         e.preventDefault()
-        alert("the password is not autistic enough add '_' to it")
+        console.log("the password is not autistic enough add '_' to it")
+        document.getElementById("error").innerText = ("the password is not autistic enough add '_' to it")
       }
     },
   }
