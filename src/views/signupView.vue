@@ -1,11 +1,6 @@
 <template>
   <header-compo></header-compo>
   <div class="box_center">
-    <!--
-    <h4> Welcome to PostIt</h4>
-    <a class="blue_text">Create an account</a>
-    <span>or<br>Please log in</span>
-    -->
     <form action="/">
       <div>
         <label>Email </label>
@@ -63,11 +58,6 @@ export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "signup",
   components: { headerCompo, footerCompo },
-  data() {
-    return {
-      password: '',
-    }
-  },
   methods: {
     check(e) {
       var value = document.getElementById('password_creation_input').value;
@@ -165,4 +155,12 @@ input[type="text"] {
   align-items: center;
 }
 
+/*
+    Applies when the browser's width is less than 1000px wide:
+*/
+@media (max-width: 275px) {
+  #error {
+    width: fit-content;
+  }
+}
 </style>
