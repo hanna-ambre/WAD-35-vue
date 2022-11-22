@@ -41,27 +41,15 @@
 <script>
 
 export function validatePasswordStartsUppercase(password) {
-  if ((/[A-Z]/).test(password.charAt(0))) {
-    return true
-  } else {
-    return false
-  }
+  return (/[A-Z]/).test(password.charAt(0));
 }
 
 export function validatePasswordcontains_(password) {
-  if ((/_/).test(password)) {
-    return true
-  } else {
-    return false
-  }
+  return (/_/).test(password);
 }
 
 export function validatePasswordLowercase(password) {
-  if ((/[a-z]{2}/).test(password)) {
-    return true
-  } else {
-    return false
-  }
+  return (/[a-z]{2}/).test(password);
 }
 
 export function validatePasswordNumbers(password) {
@@ -110,8 +98,8 @@ export default {
       }
       else if (!(validatePasswordcontains_(value))){
         e.preventDefault()
-        console.log("The password must contain an underline ('_') symbol.")
-        document.getElementById("error").innerText = ("The password must contain an underline ('_') symbol.")
+        console.log("The password must contain an underline symbol ('_').")
+        document.getElementById("error").innerText = ("The password must contain an underline symbol ('_').")
       }
     },
   }
