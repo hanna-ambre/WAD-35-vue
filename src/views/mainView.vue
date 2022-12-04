@@ -1,4 +1,4 @@
-<template>
+  <template>
   <header-compo></header-compo>
   <div class="container">
     <div class="banner"></div>

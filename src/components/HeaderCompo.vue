@@ -4,6 +4,8 @@
       <li><router-link to="/">Home</router-link></li>
       <li id="separating_bar">|</li>
       <li><router-link to="/signup">Sign-up</router-link></li>
+      <li id="separating_bar">|</li>
+      <li><router-link to="/newPost">Create a new Post</router-link></li>
     </ul>
     <div class="dropdown">
       <button class="logoButton" v-on:click="change_dropdown_menu ">
