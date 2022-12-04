@@ -1,23 +1,26 @@
 <template>
   <header-compo></header-compo>
-
   <div class="box_center">
-    <form action="/">
-      <label>A Post</label>
-      <div>
-        <label>Body </label>
-        <input
-            type="text"
-            id="post_body"
-        />
-      </div>
-      <div class="left_padding">
-        <input class="blue_button" type="submit" value="Update" @click="check($event)">
-      </div>
-      <div class="right_padding">
-        <input class="blue_button" type="submit" value="Delete" @click="check($event)">
-      </div>
-    </form>
+    <table>
+      <thead>
+      <th>name</th>
+      <th>email</th>
+      </thead>
+      <tbody>
+      <tr>
+        <td>Ilmar Möls</td>
+        <td>mols.ilmar@gmail.com</td>
+      </tr>
+    <tr>
+      <td>André Oestmann</td>
+      <td>unknown</td>
+    </tr>
+    <tr>
+      <td>Hanna Saskia Ambre</td>
+      <td>unknown</td>
+    </tr>
+      </tbody>
+    </table>
   </div>
   <footer-compo></footer-compo>
 </template>
@@ -27,7 +30,7 @@ import headerCompo from "@/components/HeaderCompo";
 import footerCompo from "@/components/FooterCompo";
 
 export default {
-  name: "editPost",
+  name: "contactUs",
   components: { headerCompo, footerCompo },
 }
 </script>
@@ -49,14 +52,10 @@ export default {
   text-align: center;
 }
 
-.left_padding {
+/*Positions certain links and buttons to the center and adds padding.*/
+.more_padding {
   padding-top: 10px;
-  text-align: left;
-}
-
-.right_padding {
-  padding-top: 10px;
-  text-align: right;
+  text-align: center;
 }
 
 /*Positions Email and Password text to the left on the signup page.*/
