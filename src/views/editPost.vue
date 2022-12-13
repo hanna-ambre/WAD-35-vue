@@ -15,7 +15,7 @@
         <input class="blue_button" type="submit" value="Update" @click="check($event)">
       </div>
       <div class="right_padding">
-        <input class="blue_button" type="submit" value="Delete" @click="check($event)">
+        <input class="blue_button" type="submit" value="Delete" @click="deletePost">
       </div>
     </form>
   </div>
@@ -29,6 +29,27 @@ import footerCompo from "@/components/FooterCompo";
 export default {
   name: "editPost",
   components: { headerCompo, footerCompo },
+
+  methods: {
+  deletePost(){
+        fetch(`http://localhost:3000/api/posts/${this.post.id}`,
+        {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        }
+        )
+        .then((response) => {
+          console.log(response.data);
+          this.$router.push("/");
+        }
+        )
+        .catch((e) => {
+          console.log(e);
+        });
+    }
+  }
 }
 </script>
 
