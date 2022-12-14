@@ -1,5 +1,6 @@
-  <template>
+<template>
   <header-compo></header-compo>
+  <button @click="Logout" class="logout">Logout</button> <!-- v-if="authResult" -->
   <div class="container">
     <div class="banner"></div>
     <div class="middle">
@@ -27,10 +28,25 @@ export default {
     postCompo 
   },
 methods: {
-  reset_likes(){
+  Logout() {
+    fetch("http://localhost:3000/auth/logout", {
+      credentials: 'include'
+    })
+        .then((response) => response.json())
+        // eslint-disable-next-line
+        .then((data) => {
+          console.log('jwt removed, ' + data);
+          location.assign("/"); // why redirect to the home directory? to know that the program is working correctly
+        })
+        // eslint-disable-next-line
+        .catch((e) => {
+          console.log("error logout: " + e);
+        });
+  },
+  reset_likes() {
     store.commit("reset_likes")
   }
-  }
+}
 }
 </script>
 
@@ -59,6 +75,14 @@ methods: {
 .middle {
   margin: auto;
   width: 70%;
+}
+
+/*Positions the log out button.*/
+.logout {
+
+  margin: auto;
+  position: absolute;
+  left: 50%;
 }
 
 /*positions the like button between footer and posts*/

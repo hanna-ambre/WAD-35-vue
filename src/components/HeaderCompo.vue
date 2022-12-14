@@ -6,6 +6,8 @@
       <li><router-link to="/signup">Sign-up</router-link></li>
       <!--is here temporeraly till we figure out how to work with backend--->
       <li id="separating_bar">|</li>
+      <li><router-link to="/login">Log-in</router-link></li>
+      <li id="separating_bar">|</li>
       <li><router-link to="/newPost">Create a new Post</router-link></li>
       <li id="separating_bar">|</li>
       <li><router-link to="/contactUs">contact us</router-link></li>

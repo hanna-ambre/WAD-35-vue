@@ -9,8 +9,7 @@
             id="email_input"
             name="email"
             placeholder="email@example.com"
-            required
-            v-model="email"
+            required v-model="email"
         />
       </div>
       <div>
@@ -22,16 +21,18 @@
             :minlength="8"
             :maxlength="15"
             placeholder="Password"
-            required
-            v-model="password"
+            required v-model="password"
         />
       </div>
       <div id="error">
         <p></p>
       </div>
       <div class="more_padding">
+        <!---<input class="blue_button" type="submit" value="Login" @click="check($event)">--->
+        <button @click="LogIn" class="center">Log in</button>
+        <p>Or</p>
         <!---<input class="blue_button" type="submit" value="Signup" @click="check($event)">--->
-        <button @click="SignUp" class="SignUp">Sign up</button>
+        <button @click='this.$router.push("/signup")' class="center">Sign up</button>
       </div>
     </form>
   </div>
@@ -54,8 +55,7 @@ export function validatePasswordLowercase(password) {
 
 export function validatePasswordNumbers(password) {
   return /[0-9]/.test(password);
-}
-*/
+}*/
 
 import headerCompo from "@/components/HeaderCompo.vue";
 import footerCompo from "@/components/FooterCompo.vue";
@@ -65,21 +65,21 @@ export default {
   name: "signup",
   components: { headerCompo, footerCompo },
   methods: {
-    SignUp() {
+    LogIn() {
       var data = {email: this.email, password: this.password};
-      fetch("http://localhost:3000/auth/signup", {
+      fetch("http://localhost:3000/auth/login", {
         method: "POST",
-        headers: {"Content-Type": "application/json"},
+        headers: {"Content-Type": "application/json",},
         credentials: 'include', // Don't forget to specify this if you need cookies
         body: JSON.stringify(data)})
           .then((response) => response.json())
           .then(() => {
+            console.log(data);
             location.assign("/");})
           .catch((e) => {
             console.log("error: " + e);});
-    }
-    /*
-    check(e) {
+    },
+    /*check(e) {
       var value = document.getElementById('password_creation_input').value;
       if (value.length<8) {
         e.preventDefault()
@@ -114,6 +114,7 @@ export default {
     }*/
   }
 }
+
 </script>
 
 <style scoped>
@@ -138,6 +139,14 @@ export default {
 .more_padding {
   padding-top: 10px;
   text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.more_padding p {
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 /*Positions Email and Password text to the left on the signup page.*/
