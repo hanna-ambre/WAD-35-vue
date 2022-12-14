@@ -17,7 +17,6 @@
 import headerCompo from "@/components/HeaderCompo.vue";
 import footerCompo from "@/components/FooterCompo.vue";
 import postCompo from "@/components/PostCompo.vue";
-import store from '@/store';
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "main",
@@ -41,9 +40,6 @@ methods: {
         .catch((e) => {
           console.log("error logout: " + e);
         });
-  },
-  reset_likes() {
-    store.commit("reset_likes")
   }
 }
 }

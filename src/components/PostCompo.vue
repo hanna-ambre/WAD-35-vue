@@ -95,6 +95,7 @@ a:hover {
   display: flex;
   justify-content: center;
 }
+
 .addPost {
   margin-right: 40px;
 }

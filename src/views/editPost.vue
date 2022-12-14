@@ -8,11 +8,9 @@
         <label for="body">Body: </label>
         <input name="body" type="text" id="body" required v-model="post.body" />
       </div>
-      <div class="left_padding">
-        <input class="blue_button" type="submit" value="Update" @click="updatePost">
-      </div>
-      <div class="right_padding">
-        <input class="blue_button" type="submit" value="Delete" @click="deletePost">
+      <div class="more_padding">
+        <input type="submit" value="Update" @click="updatePost">
+        <input type="submit" value="Delete" @click="deletePost">
       </div>
     </form>
   </div>
@@ -109,32 +107,23 @@ form > div {
   padding: 5px;
 }
 
+/*Positions certain links and buttons to the center and adds padding.*/
+.more_padding {
+  padding-top: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.more_padding input {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
 /*Sizing and styling for text boxes in login screen.*/
 input[type="text"] {
   padding: 5px;
   border: none;
-}
-
-/*Some buttons are blue.*/
-.blue_button {
-  background-color: #324c86;
-  color: white;
-  padding: .4em;
-  border: #324c86;
-  cursor: pointer;
-}
-
-/*Occasional blue text.*/
-.blue_text {
-  color: #4faeef;
-}
-
-/*
-    Applies when the browser's width is less than 1000px wide:
-*/
-@media (max-width: 275px) {
-  #error {
-    width: fit-content;
-  }
 }
 </style>

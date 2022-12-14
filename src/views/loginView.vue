@@ -28,10 +28,8 @@
         <p></p>
       </div>
       <div class="more_padding">
-        <!---<input class="blue_button" type="submit" value="Login" @click="check($event)">--->
         <button @click="LogIn" class="center">Log in</button>
         <p>Or</p>
-        <!---<input class="blue_button" type="submit" value="Signup" @click="check($event)">--->
         <button @click='this.$router.push("/signup")' class="center">Sign up</button>
       </div>
     </form>
@@ -58,8 +56,9 @@ export default {
           .then((response) => response.json())
           .then(() => {
             console.log(data);
-            location.assign("/")
-            this.$router.push("/");})
+            //location.assign("/");
+            //this.$router.push("/");
+            })
           .catch((e) => {
             console.log("error: " + e);});
     },
@@ -110,20 +109,6 @@ form > div {
 input[type="text"] {
   padding: 5px;
   border: none;
-}
-
-/*Some buttons are blue.*/
-.blue_button {
-  background-color: #324c86;
-  color: white;
-  padding: .4em;
-  border: #324c86;
-  cursor: pointer;
-}
-
-/*Occasional blue text.*/
-.blue_text {
-  color: #4faeef;
 }
 
 /*Styles the error message.*/

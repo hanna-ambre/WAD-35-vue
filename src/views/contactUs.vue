@@ -17,7 +17,7 @@
     </tr>
     <tr>
       <td>Hanna Saskia Ambre</td>
-      <td>unknown</td>
+      <td>hanna.s.ambre@gmail.com</td>
     </tr>
       </tbody>
     </table>
