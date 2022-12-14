@@ -2,7 +2,7 @@
   <div class="post" v-for="post in posts" :key="post.id">
     <div class="post-Header">
       <a @click='this.$router.push({path:`/editPost/${post.id}`})'>
-        <span class="date"> {{ post.date }} </span> <br />
+        <span class="date"> {{ onlyDate(post.date) }} </span> <br />
         <span class="body"> {{ post.body }} </span> <br />
       </a>
     </div>
@@ -22,6 +22,10 @@ export default {
     };
   },
   methods: {
+    onlyDate(date) {
+            let dateNew = new Date(date)
+            return (dateNew.getMonth()+1+ "/" +  dateNew.getDate() + "/" + dateNew.getFullYear())
+        },
     fetchPosts() {
       fetch(`http://localhost:3000/api/posts/`)
           .then((response) => response.json())
