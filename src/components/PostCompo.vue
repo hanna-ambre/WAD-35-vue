@@ -1,5 +1,5 @@
 <template>
-  <div class="post" v-for="post in postsList" :key="post.id">
+  <div class="post" v-for="post in posts" :key="post.id">
     <div class="post-Header">
       <div class="post-nav">
         <img :src="require('@/assets/'+post.avatar)" class="avatar" alt="Post picture">
@@ -47,6 +47,12 @@ export default {
     return {}
   },
   methods: {
+    fetchPosts() {
+      fetch(`http://localhost:3000/allPosts`)
+          .then((response) => response.json())
+          .then((data) => (this.posts = data))
+          .catch((err) => console.log(err.message));
+    },
     like_post(id){
       console.log(id)
       store.commit("like_post", {id})
@@ -56,7 +62,7 @@ export default {
       router.push({ path:'/newPost'})
     },
     DeleteAll(){
-      fetch(`http://localhost:3000/all/posts`, {
+      fetch(`http://localhost:3000/allPosts`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
       })
