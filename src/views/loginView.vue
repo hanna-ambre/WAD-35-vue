@@ -5,7 +5,7 @@
       <div>
         <label for="email">Email </label>
         <input
-            type="email"
+            type="text"
             id="email_input"
             name="email"
             placeholder="email@example.com"
