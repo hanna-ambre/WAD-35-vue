@@ -39,24 +39,6 @@
 </template>
 
 <script>
-/*
-export function validatePasswordStartsUppercase(password) {
-  return (/[A-Z]/).test(password.charAt(0));
-}
-
-export function validatePasswordcontains_(password) {
-  return (/_/).test(password);
-}
-
-export function validatePasswordLowercase(password) {
-  return (/[a-z]{2}/).test(password);
-}
-
-export function validatePasswordNumbers(password) {
-  return /[0-9]/.test(password);
-}
-*/
-
 import headerCompo from "@/components/HeaderCompo.vue";
 import footerCompo from "@/components/FooterCompo.vue";
 

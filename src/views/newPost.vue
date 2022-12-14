@@ -1,53 +1,44 @@
 <template>
-<header-compo></header-compo>
-
-<div class="box_center">
-<form action="/">
-  <label>A Post</label>
-  <div>
-    <label>Body </label>
-    <input
-        type="text"
-        id="post_body"
-    />
+  <header-compo></header-compo>
+  <div class="box_center">
+    <form action="/">
+      <h3>Add Post</h3>
+      <label for="body">Body: </label>
+      <input name="body" type="text" id="body" required v-model="post.body" />
+      <div class="more_padding">
+        <button type="button" @click="addPost">Add</button>
+      </div>
+    </form>
   </div>
-  <div class="more_padding">
-    <input class="blue_button" type="submit" value="Post" @click="check($event)">
-  </div>
-</form>
-</div>
-<footer-compo></footer-compo>
+  <footer-compo></footer-compo>
 </template>
+
 
 <script>
 import headerCompo from "@/components/HeaderCompo";
 import footerCompo from "@/components/FooterCompo";
 
 export default {
-  name: "newPost",
+  name: "AddPost",
   components: { headerCompo, footerCompo },
   data() {
     return {
       post: {
-        id: "",
         body: "",
       },
     };
   },
   methods: {
-    fetchAPost(id) {
-      fetch(`http://localhost:3000/posts/${id}`)
-          .then((response) => response.json())
-          .then((data) => (this.post = data))
-          .catch((err) => console.log(err.message));
-    },
-    updatePost() {
-      fetch(`http://localhost:3000/posts/${this.post.id}`, {
-        method: "PUT",
+    addPost() {
+      var data = {
+        body: this.post.body,
+      };
+      fetch("http://localhost:3000/api/posts", {
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(this.post),
+        body: JSON.stringify(data),
       })
           .then((response) => {
             console.log(response.data);
@@ -55,26 +46,11 @@ export default {
           })
           .catch((e) => {
             console.log(e);
-          });
-    },
-    deletePost() {
-      fetch(`http://localhost:3000/posts/${this.post.id}`, {
-        method: "DELETE",
-        headers: { "Content-Type": "application/json" },
-      })
-          .then((response) => {
-            console.log(response.data);
-            this.$router.push("/");
-          })
-          .catch((e) => {
-            console.log(e);
+            console.log("error");
           });
     },
   },
-  mounted() {
-    this.fetchAPost(this.$route.params.id);
-  },
-}
+};
 </script>
 
 <style scoped>

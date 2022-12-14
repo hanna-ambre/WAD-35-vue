@@ -1,10 +1,9 @@
 import {createStore} from 'vuex'
 
 export default createStore({
-    /*
-        strict: true,
-
-            state: {
+    strict: true,
+    state: {
+        /*
                 postsList: [
             {id: 1, avatar: "person.png", name: "Andre", date: "25.09.2021", text: "Just trying out this new webpage I found", image: "mountains.jpg", likes: 0},
             {id: 2, avatar: "person.png", name: "Jens", date: "01.10.2021", text: "This seems like a nice website, wonder who's designed it!", image: "forest.jpg", likes: 0},
@@ -17,8 +16,10 @@ export default createStore({
             {id: 9, avatar: "person.png", name: "Lara", date: "25.11.2021", text : "Yeah guys, let's maybe not?", image: "cat.jpg", likes: 0},
             {id: 10, avatar: "person.png", name: "Torsten", date: "30.11.2021", text : "That was such a weird exchange.", image: "pool.jpg", likes: 0}
           ]
+          */
     },
     getters: {
+    /*
         postsList: state => {
             var postsList = state.postsList.map(post => {
                 return {
@@ -32,8 +33,8 @@ export default createStore({
                 }
             })
             return postsList
-        },
-    },*/
+        },*/
+    },
     mutations: {
         change_dropdown_menu: () => {
             if (document.getElementById("Dropdown").style.display==="table"){

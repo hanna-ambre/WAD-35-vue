@@ -1,32 +1,14 @@
 <template>
   <div class="post" v-for="post in posts" :key="post.id">
     <div class="post-Header">
-      <div class="post-nav">
-        <img :src="require('@/assets/'+post.avatar)" class="avatar" alt="Post picture">
-        <a href="#">{{post.name}}</a>
-      </div>
-      <a href="#">{{post.date}}</a>
-    </div>
-    <div class="post-body">
-      <p>{{post.text}}</p>
-      <img v-if="post.image != ''" :src="require('@/assets/'+post.image)" class="post-pictures" alt="Post picture">
-      <div class="post-likes">
-        <button v-on:click="like_post(post.id)">
-          <img alt="Like button" src='@/assets/thumbsup.png'>
-        </button>
-        <p>{{post.likes}} likes</p>
-      </div>
+      <a :href="'/api/apost/' + post.id">
+        <span class="date"> {{ post.date }} </span> <br />
+        <span class="body"> {{ post.body }} </span> <br />
+      </a>
     </div>
   </div>
   <div class="container">
-    <!--
-  <div class="addPost">
-    <button onclick="addPost">
-      Add post
-    </button>
-  </div>
-    --->
-    <li><router-link to="/newPost">Add post</router-link></li>
+    <button @click='this.$router.push("/newPost")' class="addPost">Add Post</button>
   <div class="DeleteAll">
     <button v-on:click="DeleteAll">
      Delete all
@@ -36,6 +18,59 @@
 </template>
 
 <script>
+export default {
+  name: "AllPosts",
+  data() {
+    return {
+      posts: [],
+    };
+  },
+  methods: {
+    fetchPosts() {
+      fetch(`http://localhost:3000/api/posts/`)
+          .then((response) => response.json())
+          .then((data) => (this.posts = data))
+          .catch((err) => console.log(err.message));
+    },
+    DeleteAll(){
+      fetch(`http://localhost:3000/api/posts/`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+      })
+          .then((response) => {
+            console.log(response.data);
+            this.$router.push("/");
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+    },
+    addPost() {
+      var data = {
+        body: this.post.body,
+      };
+      fetch("http://localhost:3000/api/posts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+          .then((response) => {
+            console.log(response.data);
+          })
+          .catch((e) => {
+            console.log(e);
+            console.log("error");
+          });
+    },
+  },
+  mounted() {
+    this.fetchPosts();
+    console.log("mounted");
+  },
+};
+/*
 import store from "@/store"
 import router from "@/router";
 
@@ -61,12 +96,7 @@ export default {
       console.log("moving to Add post page")
       router.push({ path:'/newPost'})
     },
-    DeleteAll(){
-      fetch(`http://localhost:3000/allPosts`, {
-        method: "DELETE",
-        headers: { "Content-Type": "application/json" },
-      })
-    }
+
   },
   computed: {
     postsList(){
@@ -74,6 +104,7 @@ export default {
     },
   }
 }
+*/
 </script>
 
 <style scoped>
