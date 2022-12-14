@@ -18,10 +18,26 @@
       </div>
     </div>
   </div>
+  <div class="container">
+    <!--
+  <div class="addPost">
+    <button onclick="addPost">
+      Add post
+    </button>
+  </div>
+    --->
+    <li><router-link to="/newPost">Add post</router-link></li>
+  <div class="DeleteAll">
+    <button v-on:click="DeleteAll">
+     Delete all
+    </button>
+  </div>
+  </div>
 </template>
 
 <script>
 import store from "@/store"
+import router from "@/router";
 
 export default {
   name: "postCompo",
@@ -35,6 +51,16 @@ export default {
       console.log(id)
       store.commit("like_post", {id})
     },
+    addPost(){
+      console.log("moving to Add post page")
+      router.push({ path:'/newPost'})
+    },
+    DeleteAll(){
+      fetch(`http://localhost:3000/all/posts`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+      })
+    }
   },
   computed: {
     postsList(){
@@ -117,5 +143,9 @@ export default {
 .reactions {
   width: 35px;
   height: 35px;
+}
+.container {
+  display: flex;
+  justify-content: center;
 }
 </style>

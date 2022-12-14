@@ -12,10 +12,10 @@
         />
       </div>
       <div class="left_padding">
-        <input class="blue_button" type="submit" value="Update" @click="check($event)">
+        <input class="blue_button" type="submit" value="Update" @click="updatePost">
       </div>
       <div class="right_padding">
-        <input class="blue_button" type="submit" value="Delete" @click="check($event)">
+        <input class="blue_button" type="submit" value="Delete" @click="deletePost">
       </div>
     </form>
   </div>
@@ -29,6 +29,54 @@ import footerCompo from "@/components/FooterCompo";
 export default {
   name: "editPost",
   components: { headerCompo, footerCompo },
+  data() {
+    return {
+      post: {
+        id: "",
+        body: ""
+      },
+    };
+  },
+  methods: {
+    fetchAPost(id) {
+      fetch(`http://localhost:3000/posts/${id}`)
+          .then((response) => response.json())
+          .then((data) => (this.post = data))
+          .catch((err) => console.log(err.message));
+    },
+    updatePost() {
+      fetch(`http://localhost:3000/posts/${this.post.id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(this.post),
+      })
+          .then((response) => {
+            console.log(response.data);
+            this.$router.push("/posts");
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+    },
+    deletePost() {
+      fetch(`http://localhost:3000/posts/${this.post.id}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+      })
+          .then((response) => {
+            console.log(response.data);
+            this.$router.push("/posts");
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+    },
+  },
+  mounted() {
+    this.fetchAPost(this.$route.params.id);
+  },
 }
 </script>
 
