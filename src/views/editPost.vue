@@ -29,8 +29,7 @@ export default {
   data() {
     return {
       post: {
-        id: "",
-        body: ""
+        body: "",
       },
     };
   },

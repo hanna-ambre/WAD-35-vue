@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: "AllPosts",
+  name: "postCompo",
   data() {
     return {
       posts: [],
@@ -75,20 +75,13 @@ export default {
   padding: 10px;
 }
 
-.post-likes button:hover {
-  cursor: pointer;
-  background:#cecfd1;
+a {
+  text-decoration: none;
 }
-.post-likes img {
-  width: 50px;
-  height: 50px;
+a:hover {
+  text-decoration: underline;
 }
 
-/*Post header links' backgrounds change when hovering over them.*/
-.avatar ~ a:hover { /*Applies to the name of a post (after avatar).*/
-  background-color: #cecfd1;
-  border-radius: 10px;
-}
 .post-Header > a:hover { /*Applies to the date of a post (not to post-nav).*/
   background-color: #cecfd1;
   border-radius: 10px;
