@@ -39,7 +39,7 @@ export default {
       })
           .then((response) => {
             console.log(response.data);
-            this.$router.push("/");
+            this.$router.go();
           })
           .catch((e) => {
             console.log(e);
