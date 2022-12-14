@@ -34,7 +34,7 @@ methods: {
         // eslint-disable-next-line
         .then((data) => {
           console.log('jwt removed, ' + data);
-          location.assign("/"); // why redirect to the home directory? to know that the program is working correctly
+          this.$router.push("/login");
         })
         // eslint-disable-next-line
         .catch((e) => {
