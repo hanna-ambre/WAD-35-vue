@@ -13,7 +13,7 @@
       </tr>
     <tr>
       <td>André Oestmann</td>
-      <td>unknown</td>
+      <td>andy.oestmann@gmail.com</td>
     </tr>
     <tr>
       <td>Hanna Saskia Ambre</td>
@@ -52,12 +52,6 @@ export default {
   text-align: center;
 }
 
-/*Positions certain links and buttons to the center and adds padding.*/
-.more_padding {
-  padding-top: 10px;
-  text-align: center;
-}
-
 /*Positions Email and Password text to the left on the signup page.*/
 form > div {
   text-align: right;
@@ -68,28 +62,5 @@ form > div {
 input[type="text"] {
   padding: 5px;
   border: none;
-}
-
-/*Some buttons are blue.*/
-.blue_button {
-  background-color: #324c86;
-  color: white;
-  padding: .4em;
-  border: #324c86;
-  cursor: pointer;
-}
-
-/*Occasional blue text.*/
-.blue_text {
-  color: #4faeef;
-}
-
-/*
-    Applies when the browser's width is less than 1000px wide:
-*/
-@media (max-width: 275px) {
-  #error {
-    width: fit-content;
-  }
 }
 </style>

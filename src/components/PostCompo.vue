@@ -69,12 +69,6 @@ export default {
   align-items: center;
   justify-content: space-between;
 }
-.post-nav {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-}
 .post-Header a {
   padding: 10px;
 }

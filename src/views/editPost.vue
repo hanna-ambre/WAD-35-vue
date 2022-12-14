@@ -91,16 +91,6 @@ export default {
   text-align: center;
 }
 
-.left_padding {
-  padding-top: 10px;
-  text-align: left;
-}
-
-.right_padding {
-  padding-top: 10px;
-  text-align: right;
-}
-
 /*Positions Email and Password text to the left on the signup page.*/
 form > div {
   text-align: right;

@@ -3,11 +3,6 @@
     <ul class="nav">
       <li><router-link to="/">Home</router-link></li>
       <li id="separating_bar">|</li>
-      <li><router-link to="/signup">Sign-up</router-link></li>
-      <!--is here temporeraly till we figure out how to work with backend--->
-      <li id="separating_bar">|</li>
-      <li><router-link to="/login">Log-in</router-link></li>
-      <li id="separating_bar">|</li>
       <li><router-link to="/contactUs">Contact us</router-link></li>
     </ul>
   </div>
@@ -33,12 +28,6 @@ export default {
   padding: 10px 15px;
 }
 
-/*Keeps header logo from touching the right side of the screen.*/
-.logo {
-  height: 50px;
-  width: 50px;
-}
-
 .header {
   /*Header box color and padding.*/
   background-color: #bfbfbf;
@@ -59,59 +48,5 @@ export default {
 /*Users can't select the little separating bar in the navigation.*/
 #separating_bar {
   user-select: none;
-}
-
-/* DROPDOWN MENU WHEN CLICKING ON HEADER AVATAR: */
-
-/* Dropdown Button */
-.logoButton {
-  background-color: #bfbfbf;
-  color: white;
-  padding: 16px;
-  margin-right: 8px;
-  border-radius: 10px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-}
-
-/* Dropdown button on hover & focus */
-.logoButton:hover{
-  background-color: #b0b0b0;
-}
-
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #e6e6e6;
-  right: 0;
-  min-width: 160px;
-  white-space: nowrap;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  border-radius: 10px;
-  z-index: 1;
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-  width: 100%;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: flex;
-  float:left;
-}
-
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {
-  background-color: #d6d6d6;
-  border-radius: 10px;
 }
 </style>
