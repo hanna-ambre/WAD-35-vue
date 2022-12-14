@@ -1,15 +1,14 @@
 <template>
   <header-compo></header-compo>
-  <button @click="Logout" class="logout">Logout</button> <!-- v-if="authResult" -->
+  <div>
+    <button @click="Logout" class="logout">Logout</button>
+  </div>
   <div class="container">
     <div class="banner"></div>
     <div class="middle">
       <post-compo></post-compo>
     </div>
     <div class="banner"></div>
-  </div>
-  <div>
-    <button class="reset_likes" v-on:click="reset_likes">Reset likes</button>
   </div>
   <footer-compo></footer-compo>
 </template>
@@ -79,20 +78,10 @@ methods: {
 
 /*Positions the log out button.*/
 .logout {
-
-  margin: auto;
-  position: absolute;
-  left: 50%;
+  display: flex;
+  margin: 10px auto auto auto;
 }
 
-/*positions the like button between footer and posts*/
-.reset_likes {
-  margin: auto;
-  position: absolute;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
 /*
     Applies when the browser's width is less than 1000px wide:
 */

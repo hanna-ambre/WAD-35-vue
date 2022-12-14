@@ -5,11 +5,8 @@
     <form action="/">
       <label>A Post</label>
       <div>
-        <label>Body </label>
-        <input
-            type="text"
-            id="post_body"
-        />
+        <label for="body">Body: </label>
+        <input name="body" type="text" id="body" required v-model="post.body" />
       </div>
       <div class="left_padding">
         <input class="blue_button" type="submit" value="Update" @click="updatePost">

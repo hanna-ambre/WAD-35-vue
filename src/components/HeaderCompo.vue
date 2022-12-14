@@ -8,18 +8,8 @@
       <li id="separating_bar">|</li>
       <li><router-link to="/login">Log-in</router-link></li>
       <li id="separating_bar">|</li>
-      <li><router-link to="/contactUs">contact us</router-link></li>
+      <li><router-link to="/contactUs">Contact us</router-link></li>
     </ul>
-    <div class="dropdown">
-      <button class="logoButton" v-on:click="change_dropdown_menu ">
-        <img class="logo" alt="My picture" src="@/assets/ragnar.jpg">
-      </button>
-      <div id="Dropdown" class="dropdown-content">
-        <a id="menuOption1" class="name" href="#">Ragnar</a>
-        <a id="menuOption2" class="mail" href="#">RagnarLodbrok@yahoo-inc.com</a>
-        <a id="menuOption3" class="logout" href="#">logout</a>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -27,9 +17,6 @@
 export default {
   name: "headerCompo",
   methods: {
-    change_dropdown_menu: function() {
-      this.$store.commit("change_dropdown_menu")
-    }
   }
 }
 </script>

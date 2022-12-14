@@ -20,15 +20,7 @@ const routes = [{
         }
     }
     },
-    /*beforeEnter: async(to, from, next) => {
-        let authResult = await auth.authenticated();
-        if (!authResult) {
-            next('/login')
-        } else {
-            next();
-        }
-    }
-},*/
+
     {
         path: '/signup',
         name: 'signup',

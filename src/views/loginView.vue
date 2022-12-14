@@ -5,7 +5,7 @@
       <div>
         <label for="email">Email </label>
         <input
-            type="text"
+            type="email"
             id="email_input"
             name="email"
             placeholder="email@example.com"
@@ -58,43 +58,11 @@ export default {
           .then((response) => response.json())
           .then(() => {
             console.log(data);
-            location.assign("/");})
+            location.assign("/")
+            this.$router.push("/");})
           .catch((e) => {
             console.log("error: " + e);});
     },
-    /*check(e) {
-      var value = document.getElementById('password_creation_input').value;
-      if (value.length<8) {
-        e.preventDefault()
-        console.log("The password is too short, current length is " + value.length + " and the needed length is at least 8.")
-        document.getElementById("error").innerText = ("The password is too short, current length is " + value.length + " and the needed length is at least 8.");
-      }
-      else if (value.length>15) {
-        e.preventDefault()
-        console.log("The password is too long, current length is " + value.length + " and the maximum length is 15.")
-        document.getElementById("error").innerText = ("The password is too long, current length is " + value.length + " and the maximum length is 15.")
-      }
-      else if (!(validatePasswordLowercase(value))){
-        e.preventDefault()
-        console.log("There have to be at least 2 lowercase characters.")
-        document.getElementById("error").innerText = ("There have to be at least 2 lowercase characters.")
-      }
-      else if (!(validatePasswordNumbers(value))){
-        e.preventDefault()
-        console.log("There has to be at least 1 numeric value.")
-        document.getElementById("error").innerText = ("There has to be at least 1 numeric value.")
-      }
-      else if (!(validatePasswordStartsUppercase(value))){
-        e.preventDefault()
-        console.log("The password must start with an uppercase character.")
-        document.getElementById("error").innerText = ("The password must start with an uppercase character.")
-      }
-      else if (!(validatePasswordcontains_(value))){
-        e.preventDefault()
-        console.log("The password must contain an underline symbol ('_').")
-        document.getElementById("error").innerText = ("The password must contain an underline symbol ('_').")
-      }
-    }*/
   }
 }
 

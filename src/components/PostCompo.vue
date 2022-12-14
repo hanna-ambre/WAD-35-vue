@@ -1,19 +1,15 @@
 <template>
   <div class="post" v-for="post in posts" :key="post.id">
     <div class="post-Header">
-      <a :href="'/api/apost/' + post.id">
+      <a @click='this.$router.push({path:`/editPost/${post.id}`})'>
         <span class="date"> {{ post.date }} </span> <br />
         <span class="body"> {{ post.body }} </span> <br />
       </a>
     </div>
   </div>
-  <div class="container">
+  <div class="buttons">
     <button @click='this.$router.push("/newPost")' class="addPost">Add Post</button>
-  <div class="DeleteAll">
-    <button v-on:click="DeleteAll">
-     Delete all
-    </button>
-  </div>
+    <button v-on:click="DeleteAll">Delete all</button>
   </div>
 </template>
 
@@ -45,66 +41,12 @@ export default {
             console.log(e);
           });
     },
-    addPost() {
-      var data = {
-        body: this.post.body,
-      };
-      fetch("http://localhost:3000/api/posts", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      })
-          .then((response) => {
-            console.log(response.data);
-          })
-          .catch((e) => {
-            console.log(e);
-            console.log("error");
-          });
-    },
   },
   mounted() {
     this.fetchPosts();
     console.log("mounted");
   },
 };
-/*
-import store from "@/store"
-import router from "@/router";
-
-export default {
-  name: "postCompo",
-  props: {
-  },
-  data: function() {
-    return {}
-  },
-  methods: {
-    fetchPosts() {
-      fetch(`http://localhost:3000/allPosts`)
-          .then((response) => response.json())
-          .then((data) => (this.posts = data))
-          .catch((err) => console.log(err.message));
-    },
-    like_post(id){
-      console.log(id)
-      store.commit("like_post", {id})
-    },
-    addPost(){
-      console.log("moving to Add post page")
-      router.push({ path:'/newPost'})
-    },
-
-  },
-  computed: {
-    postsList(){
-      return store.getters.postsList
-    },
-  }
-}
-*/
 </script>
 
 <style scoped>
@@ -133,18 +75,6 @@ export default {
   padding: 10px;
 }
 
-.post-likes {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-}
-.post-likes button{
-  padding: 0;
-  border: none;
-  background: none;
-}
-
 .post-likes button:hover {
   cursor: pointer;
   background:#cecfd1;
@@ -164,25 +94,11 @@ export default {
   border-radius: 10px;
 }
 
-/*Sets the sizes of the posts' avatars.*/
-.avatar{
-  width: 40px;
-  height: 40px;
-}
-
-/*Sets the sizes of pictures in the posts.*/
-.post-pictures {
-  width: 100%;
-  height: 100%;
-}
-
-/*Sets the sizes of likes.*/
-.reactions {
-  width: 35px;
-  height: 35px;
-}
-.container {
+.buttons {
   display: flex;
   justify-content: center;
+}
+.addPost {
+  margin-right: 40px;
 }
 </style>
