@@ -8,8 +8,6 @@
       <li id="separating_bar">|</li>
       <li><router-link to="/login">Log-in</router-link></li>
       <li id="separating_bar">|</li>
-      <li><router-link to="/newPost">Create a new Post</router-link></li>
-      <li id="separating_bar">|</li>
       <li><router-link to="/contactUs">contact us</router-link></li>
     </ul>
     <div class="dropdown">
