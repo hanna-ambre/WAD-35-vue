@@ -50,15 +50,15 @@ const routes = [{
         component: editPost,
     },
     {
-        path: "/all/posts",
-        name: "editPost",
-        component: editPost,
-    },
-    {
         path: '/contactUs',
         name: 'contactUs',
         component: contactUsView
     },
+    { //will route to AllPosts view if none of the previous routes apply
+        path: "/:catchAll(.*)",
+        name: "main",
+        component: mainView,
+    }
 ]
 
 const router = createRouter({

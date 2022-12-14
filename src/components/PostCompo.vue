@@ -1,7 +1,7 @@
 <template>
   <div class="post" v-for="post in posts" :key="post.id">
     <div class="post-Header">
-      <a :href="'/api/apost/' + post.id">
+      <a class= 'singlepost'  @click='this.$router.push({path:`/editPost/${post.id}`})'>
         <span class="date"> {{ post.date }} </span> <br />
         <span class="body"> {{ post.body }} </span> <br />
       </a>
@@ -19,7 +19,7 @@
 
 <script>
 export default {
-  name: "AllPosts",
+  name: "postCompo",
   data() {
     return {
       posts: [],
@@ -131,6 +131,13 @@ export default {
 }
 .post-Header a {
   padding: 10px;
+}
+
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
 }
 
 .post-likes {
