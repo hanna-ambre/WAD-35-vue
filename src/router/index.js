@@ -18,7 +18,7 @@ const routes = [{
         } else {
             next();
         }
-    }
+        }
     },
 
     {
@@ -32,25 +32,41 @@ const routes = [{
         component: loginView
     },
     {
+        path: '/contactUs',
+        name: 'contactUs',
+        component: contactUsView
+    },
+    {
         path: '/newPost',
         name: 'newPost',
-        component: newPostView
+        component: newPostView,
+        beforeEnter: async(to, from, next) => {
+            let authResult = await auth.authenticated();
+            if (!authResult) {
+                next('/login')
+            } else {
+                next();
+            }
+        }
     },
     {
         path: "/editPost/:id",
         name: "editPost",
         component: editPost,
+        beforeEnter: async(to, from, next) => {
+            let authResult = await auth.authenticated();
+            if (!authResult) {
+                next('/login')
+            } else {
+                next();
+            }
+        }
     },
-    {
-        path: '/contactUs',
-        name: 'contactUs',
-        component: contactUsView
-    },
-    { //will route to AllPosts view if none of the previous routes apply
-        path: "/:catchAll(.*)",
-        name: "main",
-        component: mainView,
-    }
+//    { //will route to AllPosts view if none of the previous routes apply
+//        path: "/:catchAll(.*)",
+//        name: "main",
+//        component: mainView,
+//    }
 ]
 
 const router = createRouter({
