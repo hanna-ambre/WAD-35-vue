@@ -9,6 +9,7 @@
         <input
             type="text"
             id="post_body"
+            required v-model="post.body"
         />
       </div>
       <div class="left_padding">
